@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package upt.edu.mx.conexion;
 
 import java.sql.Connection;
@@ -10,14 +14,14 @@ import java.util.Properties;
  *
  * @author Jose Rene
  */
-public class ConexionBd {
+public class ConexionBdLocal {
     /**Establesco los parametros 
      * 
      */
-    private static String HOST = "bdmysqldomotica.mysql.database.azure.com";
+    private static String HOST = "LOCALHOST";
     private static String DATABASE = "domotica";
-    private static String USER = "adminR@bdmysqldomotica";
-    private static String PASSWORD = "Joserene20";   
+    private static String USER = "Usuario";
+    private static String PASSWORD = "12345678";   
     public Connection conectar() throws ClassNotFoundException 
     {
         Connection con = null;

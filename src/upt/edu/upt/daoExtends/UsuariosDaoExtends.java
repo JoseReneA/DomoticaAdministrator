@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.modelo.Contacto;
 import upt.edu.mx.modelo.Usuario;
 
@@ -17,7 +17,7 @@ import upt.edu.mx.modelo.Usuario;
  * @author Jose Rene
  */
 public class UsuariosDaoExtends  {
-    static ConexionBd conexionbd= new ConexionBd();
+    static ConexionBdAzure conexionbd= new ConexionBdAzure();
     static PreparedStatement preparedStatement;
     private static boolean estado;
     private static Connection co =null;

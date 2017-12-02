@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import upt.edu.mx.abstracts.AccionesAbst;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.modelo.Contacto;
 import upt.edu.mx.modelo.Usuario;
 
@@ -21,7 +21,7 @@ import upt.edu.mx.modelo.Usuario;
  * @author Jose Rene
  */
 public class UsuarioDao<E> extends AccionesAbst {
-    static ConexionBd conexionbd= new ConexionBd();
+    static ConexionBdAzure conexionbd= new ConexionBdAzure();
     static PreparedStatement preparedStatement;
     static private boolean estado;
     static private Connection co =null;

@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import upt.edu.mx.abstracts.AccionesAbst;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.modelo.Direccion;
 import upt.edu.mx.modelo.Usuario;
 
@@ -22,7 +22,7 @@ import upt.edu.mx.modelo.Usuario;
  * @author Jose Rene
  */
 public class DireccionDao<E> extends AccionesAbst{
-    static ConexionBd conexionbd= new ConexionBd();
+    static ConexionBdAzure conexionbd= new ConexionBdAzure();
     static PreparedStatement preparedStatement;
     private static boolean estado;
     private static Connection co =null;

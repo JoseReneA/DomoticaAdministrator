@@ -5,7 +5,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.controller.DireccionController;
 import upt.edu.mx.controller.UsuariosController;
 import upt.edu.mx.modelo.Usuario;

@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.exolab.castor.types.DateTime;
 import upt.edu.mx.abstracts.AccionesAbst;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.modelo.Alarma;
 import upt.edu.mx.modelo.Usuario;
 
@@ -26,7 +26,7 @@ import upt.edu.mx.modelo.Usuario;
  * @author Jose Rene
  */
 public class AlarmaDao extends AccionesAbst  {
-    static ConexionBd conexionbd= new ConexionBd();
+    static ConexionBdAzure conexionbd= new ConexionBdAzure();
     static PreparedStatement preparedStatement;
     private static boolean estado;
     private static Connection co =null;

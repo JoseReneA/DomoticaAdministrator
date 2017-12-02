@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import org.exolab.castor.types.DateTime;
-import upt.edu.mx.conexion.ConexionBd;
+import upt.edu.mx.conexion.ConexionBdAzure;
 import upt.edu.mx.modelo.Alarma;
 import upt.edu.mx.modelo.Usuario;
 
@@ -28,7 +28,7 @@ import upt.edu.mx.modelo.Usuario;
  * @author Jose Rene
  */
 public class AlarmaDaoExtends<E> {
-    ConexionBd conexionbd= new ConexionBd();
+    ConexionBdAzure conexionbd= new ConexionBdAzure();
     PreparedStatement preparedStatement;
     private boolean estado;
     private Connection co =null;
