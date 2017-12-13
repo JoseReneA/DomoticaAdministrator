@@ -5,6 +5,7 @@
  */
 package upt.edu.mx.gui;
 
+import ff.Principal;
 import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -49,6 +50,7 @@ public class Menu extends javax.swing.JFrame {
         jbtHistorial = new upt.edu.mx.rsbuttom.RSButtonMetro();
         jbtReportes = new upt.edu.mx.rsbuttom.RSButtonMetro();
         jbtUsuarios = new upt.edu.mx.rsbuttom.RSButtonMetro();
+        lblAcercaDe = new upt.edu.mx.rsbuttom.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -56,6 +58,7 @@ public class Menu extends javax.swing.JFrame {
         pnlCentro = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlPrincipal = new javax.swing.JPanel();
 
@@ -188,6 +191,30 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        lblAcercaDe.setBackground(new java.awt.Color(239, 238, 244));
+        lblAcercaDe.setForeground(new java.awt.Color(128, 128, 131));
+        lblAcercaDe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/upt/edu/mx/imagenes/iconAbout.png"))); // NOI18N
+        lblAcercaDe.setText("About");
+        lblAcercaDe.setColorHover(new java.awt.Color(204, 204, 204));
+        lblAcercaDe.setColorNormal(new java.awt.Color(239, 238, 244));
+        lblAcercaDe.setColorPressed(new java.awt.Color(204, 204, 204));
+        lblAcercaDe.setColorTextHover(new java.awt.Color(128, 128, 131));
+        lblAcercaDe.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        lblAcercaDe.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        lblAcercaDe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblAcercaDe.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        lblAcercaDe.setIconTextGap(25);
+        lblAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblAcercaDeMousePressed(evt);
+            }
+        });
+        lblAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblAcercaDeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
@@ -202,7 +229,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbtReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -214,10 +242,12 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jbtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jbtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbtReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -274,7 +304,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 678, Short.MAX_VALUE)
                 .addComponent(jCTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -306,6 +336,16 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(128, 128, 131));
         jLabel4.setText("Administración");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/upt/edu/mx/imagenes/iconHelp.png"))); // NOI18N
+        jLabel3.setText("Ayuda");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -313,7 +353,9 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(555, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,6 +363,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jScrollPane1.setBorder(null);
@@ -334,14 +377,16 @@ public class Menu extends javax.swing.JFrame {
         pnlCentroLayout.setHorizontalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addGroup(pnlCentroLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlCentroLayout.setVerticalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCentroLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -403,7 +448,11 @@ public class Menu extends javax.swing.JFrame {
                     
                     this.jbtUsuarios.setColorNormal(new Color(239,238,244));
                     this.jbtUsuarios.setColorHover(new Color(204,204,204));
-                    this.jbtUsuarios.setColorPressed(new Color(204,204,204));  
+                    this.jbtUsuarios.setColorPressed(new Color(204,204,204));
+                    
+                    this.lblAcercaDe.setColorNormal(new Color(239,238,244));
+                    this.lblAcercaDe.setColorHover(new Color(204,204,204));
+                    this.lblAcercaDe.setColorPressed(new Color(204,204,204));
                 }else{
                     this.jbtReportes.setColorNormal(new Color(239,238,244));
                     this.jbtReportes.setColorHover(new Color(204,204,204));
@@ -439,6 +488,10 @@ public class Menu extends javax.swing.JFrame {
             this.jbtUsuarios.setColorNormal(new Color(239,238,244));
             this.jbtUsuarios.setColorHover(new Color(204,204,204));
             this.jbtUsuarios.setColorPressed(new Color(204,204,204));
+            
+            this.lblAcercaDe.setColorNormal(new Color(239,238,244));
+            this.lblAcercaDe.setColorHover(new Color(204,204,204));
+            this.lblAcercaDe.setColorPressed(new Color(204,204,204));
 
         }else{
             this.jbtHistorial.setColorNormal(new Color(239,238,244));
@@ -471,6 +524,10 @@ public class Menu extends javax.swing.JFrame {
                 this.jbtUsuarios.setColorNormal(new Color(239,238,244));
                 this.jbtUsuarios.setColorHover(new Color(204,204,204));
                 this.jbtUsuarios.setColorPressed(new Color(204,204,204));
+                
+                this.lblAcercaDe.setColorNormal(new Color(239,238,244));
+                this.lblAcercaDe.setColorHover(new Color(204,204,204));
+                this.lblAcercaDe.setColorPressed(new Color(204,204,204));
             }else{
                 this.jbtInicio.setColorNormal(new Color(239,238,244));
                 this.jbtInicio.setColorHover(new Color(204,204,204));
@@ -509,13 +566,55 @@ public class Menu extends javax.swing.JFrame {
                     
                     this.jbtReportes.setColorNormal(new Color(239,238,244));
                     this.jbtReportes.setColorHover(new Color(204,204,204));
-                    this.jbtReportes.setColorPressed(new Color(204,204,204));  
+                    this.jbtReportes.setColorPressed(new Color(204,204,204)); 
+                    
+                    this.lblAcercaDe.setColorNormal(new Color(239,238,244));
+                    this.lblAcercaDe.setColorHover(new Color(204,204,204));
+                    this.lblAcercaDe.setColorPressed(new Color(204,204,204));
                 }else{
                     this.jbtUsuarios.setColorNormal(new Color(239,238,244));
                     this.jbtUsuarios.setColorHover(new Color(204,204,204));
                     this.jbtUsuarios.setColorPressed(new Color(204,204,204)); 
                 }
     }//GEN-LAST:event_jbtUsuariosActionPerformed
+
+    private void lblAcercaDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAcercaDeMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAcercaDeMousePressed
+
+    private void lblAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAcercaDeActionPerformed
+         new CambiarPanel(pnlPrincipal, new upt.edu.mx.paneles.jpnlAbout());
+            if(this.lblAcercaDe.isSelected()){          
+                    this.lblAcercaDe.setColorNormal(new Color(204,204,204));
+                    this.lblAcercaDe.setColorHover(new Color(204,204,204));
+                    this.lblAcercaDe.setColorPressed(new Color(204,204,204)); 
+                    
+                    this.jbtHistorial.setColorNormal(new Color(239,238,244));
+                    this.jbtHistorial.setColorHover(new Color(204,204,204));
+                    this.jbtHistorial.setColorPressed(new Color(204,204,204));
+
+                    this.jbtInicio.setColorNormal(new Color(239,238,244));
+                    this.jbtInicio.setColorHover(new Color(204,204,204));
+                    this.jbtInicio.setColorPressed(new Color(204,204,204));       
+                    
+                    this.jbtUsuarios.setColorNormal(new Color(239,238,244));
+                    this.jbtUsuarios.setColorHover(new Color(204,204,204));
+                    this.jbtUsuarios.setColorPressed(new Color(204,204,204));  
+                    
+                    this.jbtReportes.setColorNormal(new Color(239,238,244));
+                    this.jbtReportes.setColorHover(new Color(204,204,204));
+                    this.jbtReportes.setColorPressed(new Color(204,204,204)); 
+                }else{
+                    this.lblAcercaDe.setColorNormal(new Color(239,238,244));
+                    this.lblAcercaDe.setColorHover(new Color(204,204,204));
+                    this.lblAcercaDe.setColorPressed(new Color(204,204,204)); 
+                }
+    }//GEN-LAST:event_lblAcercaDeActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        Principal p= new Principal();
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -563,6 +662,7 @@ public class Menu extends javax.swing.JFrame {
     private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -573,6 +673,7 @@ public class Menu extends javax.swing.JFrame {
     private upt.edu.mx.rsbuttom.RSButtonMetro jbtInicio;
     private upt.edu.mx.rsbuttom.RSButtonMetro jbtReportes;
     private upt.edu.mx.rsbuttom.RSButtonMetro jbtUsuarios;
+    private upt.edu.mx.rsbuttom.RSButtonMetro lblAcercaDe;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPrincipal;

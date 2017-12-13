@@ -52,28 +52,27 @@ public class jpnlHistorial<E> extends javax.swing.JPanel {
     }
     public CategoryDataset createDataset() throws Exception {
         String fechaActual=validacionesGenericas.FechaActual();
+        JOptionPane.showMessageDialog(this, fechaActual);
         int anio=validacionesGenericas.obtenerAnio();
         int mes=validacionesGenericas.obtenerMes();
         int dia=validacionesGenericas.obtenerDia();
         int fecha1=obtenerNumeroAccesos(fechaActual);
         int fecha2=obtenerNumeroAccesos(""+anio+"-"+mes+"-"+(dia-1)+"");
         int fecha3=obtenerNumeroAccesos(""+anio+"-"+mes+"-"+(dia-2)+"");
-        System.out.println(fecha1);
-        System.out.println(fecha2);
-        System.out.println(fecha3);
         final double[][] data = new double[][]{
             
             {fecha1,fecha2,fecha3},
         };
         final CategoryDataset dataset = DatasetUtilities.createCategoryDataset(
-                "PFFFFF", "MORRROSS", data
+                "RESULTADO", "", data
         );
         return dataset;
     }
     private void RenderChart() throws Exception {
+        try{
         CategoryDataset ds = createDataset();
 
-        JFreeChart chart = ChartFactory.createStackedAreaChart("HOLA", "DAAAA", "PUFFF", ds);
+        JFreeChart chart = ChartFactory.createStackedAreaChart("HISTORIAL DE ACCESOS", "", "", ds);
         chart.setBackgroundPaint(new Color(54, 63, 73));
         chart.setBorderVisible(false);
         chart.setBorderPaint(new Color(54, 63, 73));
@@ -87,6 +86,9 @@ public class jpnlHistorial<E> extends javax.swing.JPanel {
 
         jpHistorialGrafics.add(cp, BorderLayout.CENTER);
         jpHistorialGrafics.validate();
+        }catch(Exception _ex){
+            throw _ex;
+        }
 
     }
     private void llenarTabla() throws Exception

@@ -60,17 +60,16 @@ public class jpnlUsuarios extends javax.swing.JPanel {
                 {
                    validacionesGenericas.verificarEstatusJtextfield(jpTextUsuarios);
                    validacionesGenericas.verificarEstatusCombo(jpTextUsuarios);
-                   int textField=validacionesGenericas.verificarEstatusJtextfieldReturn(jpTextUsuarios);
-                   if(textField==1 )
-                   {
-                       jbtAgregar.setEnabled(true);
-                       jbtEliminar.setEnabled(true);
-                       jbtModificar.setEnabled(true);
-                   } if(textField==0 )
+                   if(jtNombreUsuario.getText().isEmpty() || jtContrasenia.getText().isEmpty() || jtfNumeroTelefonico.getText().isEmpty())
                    {
                        jbtAgregar.setEnabled(false);
                        jbtEliminar.setEnabled(false);
                        jbtModificar.setEnabled(false);
+                   }else if(!(jtNombreUsuario.getText().isEmpty() || jtContrasenia.getText().isEmpty() || jtfNumeroTelefonico.getText().isEmpty()))
+                   {
+                       jbtAgregar.setEnabled(true);
+                       jbtEliminar.setEnabled(true);
+                       jbtModificar.setEnabled(true);
                    }
                 }
             };
@@ -443,6 +442,9 @@ public class jpnlUsuarios extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfNumeroTelefonicoKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNumeroTelefonicoKeyTyped(evt);
+            }
         });
         jpTextUsuarios.add(jtfNumeroTelefonico);
         jtfNumeroTelefonico.setBounds(290, 100, 300, 30);
@@ -498,12 +500,16 @@ public class jpnlUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jtContraseniaKeyReleased
 
     private void jtfNumeroTelefonicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroTelefonicoKeyReleased
-        jlValidaNumTel_Usuario.setText(validacionesGenericas.ValidaSoloNumeros(evt, Toolkit.getDefaultToolkit(),"Solo numeros"));
+        
     }//GEN-LAST:event_jtfNumeroTelefonicoKeyReleased
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         this.limpiarCamposTexto();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void jtfNumeroTelefonicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroTelefonicoKeyTyped
+       jlValidaNumTel_Usuario.setText(validacionesGenericas.ValidaSoloNumeros(evt, Toolkit.getDefaultToolkit()));
+    }//GEN-LAST:event_jtfNumeroTelefonicoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

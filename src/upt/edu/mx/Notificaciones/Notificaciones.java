@@ -21,10 +21,9 @@ public class Notificaciones {
      * 
      * @param _mensaje 
      */
-    public void alertaSuccess(String _mensaje)
-    {
+    public void alertaSuccess(String _mensaje){
         try {
-           DesktopNotify.showDesktopMessage("Mensaje",_mensaje, DesktopNotify.SUCCESS);   
+           DesktopNotify.showDesktopMessage("Mensaje",_mensaje, DesktopNotify.SUCCESS,3000L);   
         } catch (Exception _ex) {
         }
     }
@@ -32,19 +31,18 @@ public class Notificaciones {
      * 
      * @param _mensaje 
      */
-    public void alertaError(String _mensaje)
-    {
+    public void alertaError(String _mensaje){
         try {
-           DesktopNotify.showDesktopMessage("Mensaje",_mensaje, DesktopNotify.ERROR);   
+           DesktopNotify.showDesktopMessage("Mensaje",_mensaje, DesktopNotify.ERROR,3000L);   
         } catch (Exception _ex) {
         }
     }
         
-        
-        /*
-        DesktopNotify.showDesktopMessage("¿No pasa nada con los clics?", "Nótese que esta notificación no se puede cerrar con el ratón, esto se debe a que no todas las notificaciones se cierran con un clic. Se puede optar por darles un tiempo de expiración en milisegundos, de modo que las notificaciones permanezcan un tiempo determinado en la pantalla.", DesktopNotify.TIP, 14000L);
-        */
-        
+    public void alertaPorTiempo(){
+        DesktopNotify.showDesktopMessage("¿No pasa nada con los clics?", "Nótese que esta notificación no se puede cerrar con el ratón,"
+            + " esto se debe a que no todas las notificaciones se cierran con un clic. Se puede optar por darles un tiempo de expiración en milisegundos,"
+            + " de modo que las notificaciones permanezcan un tiempo determinado en la pantalla.", DesktopNotify.TIP, 2000L);
+    }
         /*
         DesktopNotify.showDesktopMessage("Mensaje de Información", "Este es un mensaje de información, para propósito general. Se brinda un ícono por defecto para este tipo de mensajes, pero puede usar el que usted prefiera en su lugar.", DesktopNotify.INFORMATION);
         */

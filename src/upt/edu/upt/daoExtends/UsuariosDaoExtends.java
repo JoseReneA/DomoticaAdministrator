@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import upt.edu.mx.conexion.ConexionBdAzure;
+import upt.edu.mx.conexion.ConexionBdLocal;
 import upt.edu.mx.modelo.Contacto;
 import upt.edu.mx.modelo.Usuario;
 

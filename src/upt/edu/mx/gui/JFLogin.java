@@ -1,9 +1,12 @@
 
 package upt.edu.mx.gui;
 
-import javax.swing.JOptionPane;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import upt.edu.mx.Notificaciones.Notificaciones;
 import upt.edu.mx.controller.UsuariosController;
 import upt.edu.mx.modelo.Usuario;
+import upt.edu.mx.rsbuttom.ValidacionesGenericas;
 
 /**
  *
@@ -12,9 +15,9 @@ import upt.edu.mx.modelo.Usuario;
 public class JFLogin extends javax.swing.JFrame {
     UsuariosController uc= new UsuariosController();
     Menu jfmenu= new Menu();
-    /**
-     * Creates new form Login
-     */
+    ValidacionesGenericas validaciones= new ValidacionesGenericas();
+    private String mensaje;
+    Notificaciones notificaciones= new Notificaciones();
     public JFLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -25,7 +28,7 @@ public class JFLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         JPLoginPrincipal = new javax.swing.JPanel();
-        jtxtUsuario = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jbtnAcceder = new javax.swing.JButton();
         jpfContrasenia = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -34,6 +37,8 @@ public class JFLogin extends javax.swing.JFrame {
         lblLimpiarUsuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        lblUsuarioLogin = new javax.swing.JLabel();
+        lblContrasenia = new javax.swing.JLabel();
         JPanelHeader = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
@@ -46,12 +51,20 @@ public class JFLogin extends javax.swing.JFrame {
         JPLoginPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         JPLoginPrincipal.setLayout(null);
 
-        jtxtUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        jtxtUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtxtUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jtxtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        JPLoginPrincipal.add(jtxtUsuario);
-        jtxtUsuario.setBounds(170, 250, 320, 50);
+        txtUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
+        JPLoginPrincipal.add(txtUsuario);
+        txtUsuario.setBounds(170, 250, 320, 50);
 
         jbtnAcceder.setBackground(new java.awt.Color(0, 204, 51));
         jbtnAcceder.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -70,6 +83,17 @@ public class JFLogin extends javax.swing.JFrame {
         jpfContrasenia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jpfContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         jpfContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jpfContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpfContraseniaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jpfContraseniaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jpfContraseniaKeyTyped(evt);
+            }
+        });
         JPLoginPrincipal.add(jpfContrasenia);
         jpfContrasenia.setBounds(170, 330, 320, 50);
 
@@ -81,6 +105,11 @@ public class JFLogin extends javax.swing.JFrame {
         JPanelCentral.setLayout(null);
 
         lblLimpiarPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/upt/edu/mx/imagenes/cerrar.png"))); // NOI18N
+        lblLimpiarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLimpiarPasswordMouseClicked(evt);
+            }
+        });
         JPanelCentral.add(lblLimpiarPassword);
         lblLimpiarPassword.setBounds(420, 120, 40, 50);
 
@@ -102,6 +131,16 @@ public class JFLogin extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
         JPanelCentral.add(jLabel6);
         jLabel6.setBounds(20, 120, 50, 50);
+
+        lblUsuarioLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblUsuarioLogin.setForeground(new java.awt.Color(255, 255, 255));
+        JPanelCentral.add(lblUsuarioLogin);
+        lblUsuarioLogin.setBounds(80, 90, 320, 20);
+
+        lblContrasenia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblContrasenia.setForeground(new java.awt.Color(255, 255, 255));
+        JPanelCentral.add(lblContrasenia);
+        lblContrasenia.setBounds(80, 170, 320, 20);
 
         JPLoginPrincipal.add(JPanelCentral);
         JPanelCentral.setBounds(90, 210, 490, 300);
@@ -148,21 +187,22 @@ public class JFLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     int xx;
     int xy;
-    private void validaUsuario(){
+    private void validaAcceso(){
         Usuario usu= new Usuario();
         usu.setCodigoUsuario(jpfContrasenia.getText());
-        usu.setNombreUsuario(jtxtUsuario.getText());
+        usu.setNombreUsuario(txtUsuario.getText());
         boolean valida=uc.validaUsuario(usu);
         if(valida==true){
-            JOptionPane.showMessageDialog(this, "Datos correctos");
+            notificaciones.alertaSuccess("USUARIO Y CONTRASEÑA CORRECTOS, BIENVENIDO");
             jfmenu.setVisible(true);
+            this.setVisible(false);
         }else if(valida==false){
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+            notificaciones.alertaError("USUARIO O CONTRASEÑA INCORRECTOS, VERIFICA TU INFORMACIÓN");
             jfmenu.setVisible(false);
         }
     }
     private void jbtnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAccederActionPerformed
-        this.validaUsuario();
+        this.validaAcceso();
     }//GEN-LAST:event_jbtnAccederActionPerformed
 
     private void JLPrincipalMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLPrincipalMouseDragged
@@ -178,8 +218,36 @@ public class JFLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSalirMouseClicked
 
     private void lblLimpiarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLimpiarUsuarioMouseClicked
-        
+        this.txtUsuario.setText("");
     }//GEN-LAST:event_lblLimpiarUsuarioMouseClicked
+
+    private void lblLimpiarPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLimpiarPasswordMouseClicked
+        this.jpfContrasenia.setText("");
+    }//GEN-LAST:event_lblLimpiarPasswordMouseClicked
+
+    private void jpfContraseniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpfContraseniaKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {    
+           validaAcceso();
+       }
+    }//GEN-LAST:event_jpfContraseniaKeyPressed
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        mensaje=validaciones.ValidaCantidadNumerosTextField(evt, Toolkit.getDefaultToolkit(), txtUsuario.getText(), 25);
+        lblUsuarioLogin.setText(mensaje);
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void jpfContraseniaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpfContraseniaKeyReleased
+        
+    }//GEN-LAST:event_jpfContraseniaKeyReleased
+
+    private void jpfContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpfContraseniaKeyTyped
+        mensaje=validaciones.ValidaCantidadNumerosTextField(evt, Toolkit.getDefaultToolkit(), jpfContrasenia.getText(), 25);
+        lblContrasenia.setText(mensaje);
+    }//GEN-LAST:event_jpfContraseniaKeyTyped
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -225,9 +293,11 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbtnAcceder;
     private javax.swing.JPasswordField jpfContrasenia;
-    private javax.swing.JTextField jtxtUsuario;
+    private javax.swing.JLabel lblContrasenia;
     private javax.swing.JLabel lblLimpiarPassword;
     private javax.swing.JLabel lblLimpiarUsuario;
     private javax.swing.JLabel lblSalir;
+    private javax.swing.JLabel lblUsuarioLogin;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

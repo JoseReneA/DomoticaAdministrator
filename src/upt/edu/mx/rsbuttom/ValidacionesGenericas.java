@@ -2,6 +2,7 @@ package upt.edu.mx.rsbuttom;
 
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Event;
 import java.awt.Label;
 import java.awt.TextArea;
@@ -11,7 +12,9 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -56,17 +59,18 @@ public class ValidacionesGenericas
      * @param _mensaje
      * @return 
      */
-    public String ValidaSoloNumeros(KeyEvent _ke, Toolkit _tk, String _mensaje) {
+    public String ValidaSoloNumeros(KeyEvent _ke, Toolkit _tk) {
         try 
         {
+            String mensaje="Solo ingresar números";
             char c = _ke.getKeyChar();
             if (Character.isLetter(c)) {
                 _tk.beep();
                 _ke.consume();
-                return _mensaje;
+                return mensaje;
             }else
             {
-                return _mensaje = "";
+                return "";
             }
         } catch (Exception _ex) 
         {
@@ -82,19 +86,20 @@ public class ValidacionesGenericas
      * @param _mensaje
      * @return 
      */
-    public String ValidaCantidadNumerosTextField(KeyEvent _ke, Toolkit _tk, String _campo, int _cantidad, String _mensaje) 
+    public String ValidaCantidadNumerosTextField(KeyEvent _ke, Toolkit _tk, String _campo, int _cantidad) 
     {
         try 
         {
+            String mensaje="Ha excedido el numero de caracteres";
             if (_campo.length() >= _cantidad)
             {
                 _tk.beep();
                 _ke.consume();
-                return _mensaje ;
+                return mensaje ;
 //                        "\n"+" Tienes actualmente "+_campo.length();
             }else 
             {
-                return _mensaje ;
+                return "";
             }
         } catch (Exception _ex)
         {
@@ -170,6 +175,7 @@ public class ValidacionesGenericas
             throw _ex;
         }
     }
+
     /**Metodo para limpiar un label
      * 
      * @param Panel 
@@ -303,23 +309,21 @@ public class ValidacionesGenericas
      * @param _panel
      * @return 
      */
-    public int verificarEstatusJtextfieldReturn(JPanel _panel)
+    public int verificarEstatusJtextfieldReturnValue(JPanel _panel)
     {
         try 
         {
             for (int x = 0; x < _panel.getComponentCount(); x++)
             {
-                if (_panel.getComponent(x) instanceof JTextField ) 
+                while (_panel.getComponent(x) instanceof JTextField ) 
                 {
                     JTextField textField = (JTextField) _panel.getComponent(x);
-                    if (textField.getText().isEmpty()) 
+                    if (textField.getColorModel().equals(Color.red)) 
                     {
-//                        textField.setBackground(Color.RED);
                         return 0;
                     } 
-                    else if (!textField.getText().isEmpty()) 
+                    if (textField.getColorModel().equals(Color. white)) 
                     {
-//                        textField.setBackground(Color.white);
                         return 1;
                     }
                 }
@@ -329,6 +333,7 @@ public class ValidacionesGenericas
         }
         return 0;
     }
+
     /**Metodo que verifica el estatus del textArea
      * 
      * @param _panel

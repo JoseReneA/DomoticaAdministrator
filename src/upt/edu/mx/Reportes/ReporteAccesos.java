@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Reportes;
+package upt.edu.mx.Reportes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -107,7 +109,7 @@ public class ReporteAccesos extends javax.swing.JFrame {
                 try {
                     System.out.println("Imprimiendo reporte");
                     
-                    jasperPrint = JasperFillManager.fillReport("C:\\Users\\Jose Rene\\Documents\\NetBeansProjects\\Sistema_domotica\\src\\Reportes\\ReporteAccesos.jasper", map, connection);
+                    jasperPrint = JasperFillManager.fillReport("C:\\Users\\Jose Rene\\Documents\\NetBeansProjects\\Sistema_domotica\\src\\upt\\edu\\mx\\Reportes\\ReporteAccesos.jasper", map, connection);
                     net.sf.jasperreports.view.JasperViewer ac = new JasperViewer(jasperPrint, false);
                     //JFrame ac = new JasperViewer(jasperPrint);
 
@@ -115,8 +117,13 @@ public class ReporteAccesos extends javax.swing.JFrame {
 
                     ac.setVisible(true);
 
-                } catch (Exception ex) {
-                    System.out.println("Error en la impresion" + ex.getMessage());
+                } catch (Exception _ex) {
+                    try {
+                        // System.out.println("Error en la impresion" + ex.getMessage());
+                        throw _ex;
+                    } catch (Exception ex) {
+                        Logger.getLogger(ReporteAccesos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
 
 
