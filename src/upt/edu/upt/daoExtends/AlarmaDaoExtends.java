@@ -69,7 +69,7 @@ public class AlarmaDaoExtends<E> {
     public int obtenerNumeroAccesos(Date _fecha) throws Exception
     {
         try {
-             String sql="SELECT COUNT(*) FROM alarma a where a.fecha=?";	
+             String sql="SELECT COUNT(*) FROM alarma a where a.fechaNormal=?";	
              co= conexionbd.conectar();
              preparedStatement=co.prepareStatement(sql);
              preparedStatement.setDate(1, (java.sql.Date) _fecha);

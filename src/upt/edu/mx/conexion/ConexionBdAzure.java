@@ -19,10 +19,10 @@ public class ConexionBdAzure {
     private static String USER = "adminR@bdmysqldomotica";
     private static String PASSWORD = "Joserene20";   
     
-//     private static String HOST = "LOCALHOST";
-//    private static String DATABASE = "domotica";
-//    private static String USER = "Usuario";
-//    private static String PASSWORD = "12345678";   
+//     private static String HOST2 = "LOCALHOST";
+//    private static String DATABASE2 = "domotica";
+//    private static String USER2 = "Usuario";
+//    private static String PASSWORD2= "12345678";   
     public Connection conectar() throws ClassNotFoundException 
     {
         Connection con = null;
@@ -37,13 +37,20 @@ public class ConexionBdAzure {
             Properties properties = new Properties();
             properties.setProperty("user", USER);
             properties.setProperty("password", PASSWORD);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
+            properties.setProperty("useSSL", "False");
+            properties.setProperty("verifyServerCertificate", "False");
             properties.setProperty("requireSSL", "false");
         try {
             con = DriverManager.getConnection(url, properties);//Obtenemos las prpiedades de coneccion a partir de la URL y de las propiedades o variables
-            if (con != null) {
-            }
+//            if(con==null){
+//                Properties properties2 = new Properties();
+//                properties.setProperty("user", USER2);
+//                properties.setProperty("password", PASSWORD2);
+//                String url2 = String.format("jdbc:mysql://%s/%s", HOST2, DATABASE2);
+//                con = DriverManager.getConnection(url2, properties2);//Obtenemos las prpiedades de coneccion a partir de la URL y de las propiedades o variables
+//            }
+//            else if (con != null) {
+//            }
         } catch (SQLException e) {
                 System.out.println("No se pudo conectar a la base de datos");
                 e.printStackTrace();

@@ -1,6 +1,6 @@
 
 package upt.edu.mx.paneles;
-import upt.edu.mx.Reportes.CfgPrm;
+import Reportes.CfgPrm;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;

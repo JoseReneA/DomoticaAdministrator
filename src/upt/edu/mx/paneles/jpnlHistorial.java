@@ -36,7 +36,7 @@ public class jpnlHistorial<E> extends javax.swing.JPanel {
      */
     public jpnlHistorial() throws Exception {
         initComponents();
-        this.RenderChart();
+//        this.RenderChart();
         this.crearModeloTabla();
         this.llenarTabla();
     }
@@ -52,7 +52,6 @@ public class jpnlHistorial<E> extends javax.swing.JPanel {
     }
     public CategoryDataset createDataset() throws Exception {
         String fechaActual=validacionesGenericas.FechaActual();
-        JOptionPane.showMessageDialog(this, fechaActual);
         int anio=validacionesGenericas.obtenerAnio();
         int mes=validacionesGenericas.obtenerMes();
         int dia=validacionesGenericas.obtenerDia();
